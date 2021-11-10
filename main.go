@@ -13,6 +13,9 @@ import (
 	"github.com/gorilla/mux"
 
 	httpSwagger "github.com/swaggo/http-swagger"
+	_ "github.com/swaggo/http-swagger/example/gorilla/docs"
+
+	_ "./docs"
 )
 
 // @title Student App API
@@ -135,7 +138,7 @@ func main() {
 
 	router := mux.NewRouter()
 	router.PathPrefix("/swagger/").Handler(httpSwagger.Handler(
-		httpSwagger.URL("http://localhost:1323/swagger/doc.json"), //The url pointing to API definition
+		httpSwagger.URL("./swagger.yaml"), //The url pointing to API definition
 		httpSwagger.DeepLinking(true),
 		httpSwagger.DocExpansion("none"),
 		httpSwagger.DomID("#swagger-ui"),
